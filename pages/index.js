@@ -1,5 +1,11 @@
+import Item from '../components/Items'
+
 function index() {
-  return <div>Hello World this is home</div>
+  return (
+    <div>
+      <Item />
+    </div>
+  )
 }
 
 export default index
