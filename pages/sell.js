@@ -1,7 +1,7 @@
-import React from 'react'
+import CreateItem from '../components/createItem'
 
 function sell() {
-  return <div>Hello guys this is sell pages</div>
+  return <CreateItem />
 }
 
 export default sell

@@ -30,6 +30,20 @@ export default class createItem extends Component {
       [e.target.name]: value,
     })
   }
+
+  onFileUpload = async e => {
+    const file = e.target.files[0]
+    const data = new FormData()
+    data.append('file', file)
+    data.append('upload_preset', 'dipee_ecommerce')
+    const res = await fetch('https://api.cloudinary.com/v1_1/bingodingo/image/upload', { method: 'POST', body: data })
+    const dataResponse = await res.json()
+    console.log(dataResponse)
+    this.setState({
+      image: dataResponse.secure_url,
+      largeImage: dataResponse.eager[0].secure_url,
+    })
+  }
   render() {
     return (
       <Mutation mutation={CREATE_ITEM_MUTATION} variables={this.state}>
@@ -49,6 +63,10 @@ export default class createItem extends Component {
           >
             <ErrorMessage error={error} />
             <fieldset disabled={loading} aria-busy={loading}>
+              <label htmlFor='file'>
+                Title
+                <input type='file' name='file' id='file' placeholder='Upload Image' required onChange={this.onFileUpload} />
+              </label>
               <label htmlFor='title'>
                 Title
                 <input
