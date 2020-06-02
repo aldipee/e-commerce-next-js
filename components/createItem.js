@@ -14,8 +14,7 @@ const CREATE_ITEM_MUTATION = graphql`
     }
   }
 `
-
-export default class createItem extends Component {
+class createItem extends Component {
   state = {
     title: '',
     price: 0,
@@ -112,3 +111,6 @@ export default class createItem extends Component {
     )
   }
 }
+
+export default createItem
+export { CREATE_ITEM_MUTATION }
